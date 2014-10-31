@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>create.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <link rel="stylesheet" type="text/css" href="../ext-4.0.2/resources/css/ext-all.css" />
+	<script type="text/javascript" src="../ext-4.0.2/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.0.2/locale/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="human/Person.js"></script>
+    <script type="text/javascript">
+    document.write("<p style='color:blue'>"+demo.constructor+"</p>");
+    document.write("<p style='color:blue'>"+demo.human.constructor+"</p>");
+    document.write("<p style='color:blue'>"+new demo.human.Person().constructor+"</p>");
+    document.write("<p style='color:blue'>"+demo.human.Person.constructor+"</p>");
+    var person = new demo.human.Person();
+    person.say();
+    
+    //全部采用字面量赋值方式
+    var obj ={};
+    document.write("<p style='color:red'>"+obj.constructor+"</p>");
+    obj.another ={};
+    document.write("<p style='color:red'>"+obj.another.constructor+"</p>");
+    obj.another.Child = function(){
+     	this.a="A";
+    };
+    document.write("<p style='color:red'>"+new obj.another.Child().constructor+"</p>");
+    document.write("<p style='color:red'>"+obj.another.Child.constructor+"</p>");
+    
+     //全部采用 new Object的方式
+     var o = new Object();
+     document.write("<p style='color:brown'>"+o.constructor+"</p>");
+     o.other = new Object();
+     document.write("<p style='color:brown'>"+o.other.constructor+"</p>");
+     o.other.Children = function()
+     {
+     	this.b="B";
+     };
+     document.write("<p style='color:brown'>"+new o.other.Children().constructor+"</p>");
+     document.write("<p style='color:brown'>"+o.other.Children.constructor+"</p>");
+     
+     var smile = {a:"A",b:{c:"C",d:{}}};
+     document.write("<p style='color:#abc123'>"+smile.b.d.constructor+"</p>");
+    </script>
+
+  </head>
+  
+  <body>
+  </body>
+</html>

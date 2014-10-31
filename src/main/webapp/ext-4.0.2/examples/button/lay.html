@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+    <link rel="stylesheet" type="text/css" href="../shared/example.css" />
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+
+<script type="text/javascript" >
+function showWindow(){
+	var o={
+		width:500,
+		height:400,
+		title:"第一个窗口",
+		buttons:[{text:"确定"},{text:"取消"}]
+		};
+		var win=new Ext.Window(o);
+		win.show();
+}
+
+function showTree(){
+
+}
+//通过Ext.onReady来开始调用EXT组件
+	Ext.onReady(showWindow);
+</script>
+</head>
+
+<body>
+</body>
+</html>

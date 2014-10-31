@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+    <link rel="stylesheet" type="text/css" href="../shared/example.css" />
+    <script type="text/javascript" src="../../bootstrap.js"></script>
+<script type="text/javascript" src="js/person.js"></script>
+
+
+
+<script type="text/javascript" >
+
+	Ext.onReady(function(){
+		var btn=new Ext.Button({text:"按钮1"});
+		var panel=new Ext.Panel({
+			width:500,
+			height:400,
+			//顶部工具栏
+			tbar:[{text:"保存"},{text:"关闭"}],
+			//底部工具栏
+			bbar:[{text:"上一页",handler:function(){
+				panel.add({title:"面板3"});
+				//panel.doLayout();
+				panel.remove("panel2");
+			}},{text:"下一页"}],
+			title:"面板",
+			buttonAlign:"center",
+			buttons:[{text:"确定"},{text:"取消"}],
+			//html:"<h1>这是面板的BODY区域</h1>"
+			//autoLoad:"news.html"
+			items:[btn,{xtype:"button",text:"按钮2"},{id:"panel2",title:"面板2",height:100,border:false}]
+		});
+		panel.render(document.getElementById("p"));
+	});
+
+</script>
+</head>
+
+<body>
+<div id="p"></div>
+</body>
+</html>

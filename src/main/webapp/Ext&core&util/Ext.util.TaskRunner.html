@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="../ext-4.0.2/resources/css/ext-all.css" />
+	<script type="text/javascript" src="../ext-4.0.2/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.0.2/locale/ext-lang-zh_CN.js"></script>
+<style type="text/css">
+body{
+	font-size:11pt;
+	color:black;
+	padding:5px;
+}
+</style>
+<script type="text/javascript">
+	Ext.onReady(function(){
+		var ruuner = new Ext.util.TaskRunner();
+		var task = {
+			run:function(){
+				Ext.getDom('time').value = Ext.util.Format.date(new Date(),'Y-m-d g:i:s A');
+			},
+			interval:1000
+		};
+		ruuner.start(task);
+	});
+</script>
+</head>
+<body>
+	<input id="time" type="text"/>
+</body>
+</html>

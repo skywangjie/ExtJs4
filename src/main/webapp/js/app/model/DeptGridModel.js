@@ -1,0 +1,14 @@
+//用户类
+Ext.define("AM.model.DeptGridModel",{
+	extend:"Ext.data.Model",
+	fields:[
+			{name:'text',type:'string',sortable:true},
+			{name:'id',type:'string',sortable:true},
+			{name:'info',type:'string',sortable:true},
+			{name:'orderIndex',type:'int',sortable:true},
+			{name:'manager',type:'string',sortable:true},
+			{name:'nodeType',type:'string',sortable:true},
+			{name:'leaf',type:'string',sortable:true},
+			{name:'level',type:'int',sortable:true}
+		]
+});

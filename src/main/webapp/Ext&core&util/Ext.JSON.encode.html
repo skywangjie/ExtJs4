@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="../ext-4.0.2/resources/css/ext-all.css" />
+	<script type="text/javascript" src="../ext-4.0.2/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.0.2/locale/ext-lang-zh_CN.js"></script>
+<style type="text/css">
+body{
+	font-size:11pt;
+	color:black;
+	padding:5px;
+}
+</style>
+<script type="text/javascript">
+	Ext.onReady(function(){
+		//通过用字符串描述一个对象
+		var jsonStr = "{name:'the json name', value: 'the json sample'}";
+		//将该字符串进行编码，这时将形成一个含有逻辑关系的对象
+		var obj = Ext.JSON.decode(jsonStr,true);
+		alert(obj);
+		//定义一些对象，最后用数组包装起来
+		var g='g',h='h',e =[g,h],f='f',b=[e,f],a = [b,'c'];
+		//将该数组中存放的对象进行解码，打印该字符串
+		var endA = Ext.JSON.encode(a);
+		Ext.Msg.alert('提示',endA);
+	});
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default"  extends="json-default">   
+    	<action name="user" class="com.somnus.action.UserAction" >
+    		<!-- 返回List对象的 -->
+    		<result name="list" type="json">
+    			<param name="excludeProperties">ids</param>
+    		</result>
+    		<result name="delete" type="json">
+    			<param name="includeProperties">ids</param>
+    		</result>
+    	</action>
+    	
+    	<action name="dept" class="com.somnus.action.DeptAction" >
+    		<result name="dept" type="json">
+    		<param name="root">root</param>
+    		</result>
+    		<!-- 返回List对象的 -->
+    		<result name="deptlist" type="json">
+    		<param name="excludeProperties">root</param>
+    		</result>
+    		<result name="success" type="json">
+    		<param name="excludeProperties">root,total,deptInfosList</param>
+    		</result>
+    	</action>
+    	
+    	<action name="city" class="com.somnus.action.CityAction" >
+    		<result name="listcity" type="json">
+    		<param name="root">list</param>
+    		</result>
+    	</action>
+    	
+    	<action name="extjs" class="com.somnus.action.PojoAction" >
+    		<result name="success" type="json">
+    		<param name="root">list</param>
+    		<param name="excludeProperties">modelName</param>
+    		</result>
+    	</action>
+    </package>  
+    <package name="struts2-common" extends="struts-default" namespace="/dream">
+    	<action name="upload" class="com.somnus.action.UploadAction">
+    	</action>
+    </package>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.multipart.saveDir" value="/temp"></constant>
+	<constant name="struts.multipart.maxSize" value="10485760"></constant>
+</struts>

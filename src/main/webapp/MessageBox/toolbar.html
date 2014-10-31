@@ -1,0 +1,50 @@
+<HTML>
+ <HEAD>
+  <TITLE>使用add方法加入多种元素的复杂工具栏</TITLE>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="../ext-4.0.2/resources/css/ext-all.css" />
+	<script type="text/javascript" src="../ext-4.0.2/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.0.2/locale/ext-lang-zh_CN.js"></script>
+  <script type="text/javascript">
+	Ext.onReady(function(){
+		var toolbar = new Ext.toolbar.Toolbar({//创建工具栏
+			renderTo:Ext.getBody(),
+			width:800
+		});
+		toolbar.add(
+			{text:'新建',iconCls:'newIcon',handler:onButtonClick},
+			{text:'打开',iconCls:'openIcon',handler:onButtonClick},
+			{text:'编辑',handler:onButtonClick},
+			{text:'保存',iconCls:'saveIcon',handler:onButtonClick}, //加入按钮
+			'-',                          //加入工具栏分隔符
+			{     //加入表单元素
+				xtype:'textfield',
+				hideLabel : true,
+				width:150
+			},
+			'->',                        //加入一个充满工具栏的空白元素
+			'<a href=#>超连接</div>',    //加入一个Element元素
+			{xtype: 'tbspacer', width: 50},//加入一个空白元素，宽度为50像素
+			'静态文本'                   //加入一个简单字符串
+		);
+
+		function onButtonClick(btn){//点击按钮时调用的处理函数
+			alert(btn.text);//取得按钮上的文字
+		}
+		
+		Ext.get('enabledBtn').on('click',function(){
+			//启用工具栏
+			toolbar.enable();
+		});
+		Ext.get('disabledBtn').on('click',function(){
+			//禁用工具栏
+			toolbar.disable();
+		});
+	});
+  </script>
+ </HEAD>
+ <BODY STYLE="margin: 10px">
+ 	<input type=button value='启用工具栏' id='enabledBtn'>
+	<input type=button value='禁用工具栏' id='disabledBtn'>
+ </BODY>
+</HTML>

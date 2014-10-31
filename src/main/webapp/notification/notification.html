@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Ext.ux.window.Notification - Examples and documentation</title>
+
+	<link rel="stylesheet" type="text/css" href="../ext-4.0.2/resources/css/ext-all.css" />
+	<script type="text/javascript" src="../ext-4.0.2/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.0.2/locale/ext-lang-zh_CN.js"></script>
+	<link href="style/style.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/notification.js"> </script>
+
+</head>
+<body>
+
+<div id="instructionsDiv" class="x-hide-display" style="padding: 10px">
+
+	<div style="float: left; width: 45%; margin-right: 5px">
+		<h3>Notification extension for Ext JS 4.0.2+ (version: 2.1.3)</h3>
+		<p>新改进的功能包括:</p>
+		<ul>
+			<li>多个栈管理器和通知<br />
+				静态管理器对象完全消除,让通知附加到不同的组件使用x和y坐标滑的通知。</li>
+			<li>所有八个角落和边缘的文档/管理器可以使用:“tl”,“tr”,“br”,“bl”、”t“,”l“、”b“,”r“。</li>
+			<li>可以使用x和y轴上的角落。通知可以在横向滑动。</li>
+			<li>当一个通知任何通知后再次自动关闭。</li>
+			<li>将鼠标停留在通知延迟自动关闭。</li>
+			<li>容易定制的css、动画、持续时间、空隙/填充等。</li>
+		</ul>
+	</div>
+
+	<div style="width: 45%; float: right">
+		<h3>安装指示:</h3>
+		<p>检查这个演示页面的来源和自己做相应修改</p>
+		<ul>
+			<li>包括: <a href="Notification.js">Notification.js</a><br />&nbsp;</li>
+			<li>
+				设定一个标准的填充和文本对齐通知页面上包含这个css:
+				<code><pre>
+.ux-notification-window .x-window-body {
+	text-align: center;
+	padding: 15px 5px 15px 5px;
+}
+				</pre></code>
+			</li>
+
+			<li>如果你想添加图标窗口标题你可以包括<a href="images/icon16_info.png">info</a>and<a href="images/icon16_error.png">error</a>图标和添加这个css样式表:<br/>
+				<code><pre>
+.ux-notification-icon-information {
+	background-image: url('images/icon16_info.png');
+}
+					
+.ux-notification-icon-error {
+	background-image: url('images/icon16_error.png');
+}
+				</pre></code>
+				然后设置iconCls属性“ux-notification-icon-information”或“ux-notification-icon-error”启用通知上的图标。<br />&nbsp;
+			</li>
+			<li>如果你想风格然后通知如下演示2中包括<a href="images/fader.png">fader.png</a> 并添加css样式表如下:<br/>
+				<code><pre>
+.ux-notification-light .x-window-header {
+	background-color: transparent;
+}
+					
+body .ux-notification-light {
+	background-image: url('images/fader.png');
+}
+					
+.ux-notification-light .x-window-body {
+	text-align: center;
+	padding: 15px 5px 20px 5px;
+	background-color: transparent;
+	border: 0px solid white;
+}
+				</pre></code>
+				然后设置cls属性“ux-notification-light”。 注意,这个样式有点新浏览器和不同 &gt;=IE8.<br />&nbsp;
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+</body>
+</html>
