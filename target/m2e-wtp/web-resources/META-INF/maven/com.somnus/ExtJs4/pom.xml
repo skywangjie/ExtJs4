@@ -8,14 +8,56 @@
   <name>ExtJs4 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	<!-- 加入junit依赖包 -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.11</version>
+		<scope>test</scope>
+	</dependency>
+    
+    <!-- 加入jstl依赖包 -->
+	<dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.2.1-b03</version>
+		<scope>provided</scope>
+	</dependency>
+	<!-- servlet -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+		<scope>provided</scope>
+	</dependency>
+	
+	<!-- 加入struts2依赖包 -->
+	<dependency>
+		<groupId>org.apache.struts</groupId>
+		<artifactId>struts2-core</artifactId>
+		<version>2.3.15.3</version>
+	</dependency>	
+	
+    <!-- 加入pinyin4j依赖包 -->
+	<dependency>
+		<groupId>com.belerweb</groupId>
+		<artifactId>pinyin4j</artifactId>
+		<version>2.5.0</version>
+	</dependency>	
+	
+	<!-- 加入dom4j 依赖包 -->
+	<dependency>
+		<groupId>dom4j  </groupId>
+		<artifactId>dom4j </artifactId>
+		<version>1.6.1</version>
+	</dependency>
   </dependencies>
   <build>
-    <finalName>ExtJs4</finalName>
+    <finalName>Struts2</finalName>
   </build>
 </project>
