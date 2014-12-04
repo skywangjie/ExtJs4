@@ -1,8 +1,8 @@
 Ext.onReady(function(){
 	Ext.QuickTips.init();//初始化信息提示功能
-	var form = new Ext.form.Panel({
+	var formpanel = new Ext.form.Panel({
 			title:'表单',//表单标题
-			height:120,//表单高度
+			height:250,//表单高度
 			width:200,//表单宽度
 			frame:true,//是否渲染表单
 			renderTo :Ext.getBody(),
@@ -23,17 +23,41 @@ Ext.onReady(function(){
 			},
 			items:[{
 				xtype : 'textfield',
-				id:'name',
+				name:'data.name',
 				fieldLabel : '姓名'//标签内容
 			},{
 				xtype : 'numberfield',
+				name:'data.age',
 				fieldLabel : '年龄'
+			},{
+				xtype : 'textfield',
+				name:'data.father',
+				fieldLabel : '父亲'//标签内容
+			},{
+				xtype : 'textfield',
+				name:'data.mother',
+				fieldLabel : '母亲'//标签内容
 			}],
 			buttons:[{
-				text:'提交' ,handler:function()
+				text:'加载' ,handler:function()
 				{
-					var text = form.getForm().findField('name').getValue();
-					alert(text);
+					var text = formpanel.getForm().load({
+						url: 'formServer.jsp', 
+						method: 'GET',
+						waitMsg: '正在加载..',
+						timeout: 60 * 1000,
+						success: function (form, action) {
+							formpanel.getForm().setValues({
+								'data.name' :action.result.data.name,
+								'data.age' :action.result.data.age,
+								'data.father' :action.result.data.family.father,
+								'data.mother' :action.result.data.family.mother
+							});
+						},
+						failure: function (form, action) {
+						},
+						scope: this
+					});
 				}
 			}]
 		});

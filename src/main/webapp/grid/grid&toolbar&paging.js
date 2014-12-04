@@ -5,6 +5,17 @@ Ext.onReady(function() {
 				limit : 4
 			},
 			fields : ['id', 'name', 'age'],
+			fields : [{
+				name:'id',type:'string'
+			},{
+				name:'name',type:'string'
+			},{
+				name:'age',type:'string'
+			},{
+				name:'father',type:'string',mapping:'family.father'
+			},{
+				name:'mother',type:'string',mapping:'family.mother'
+			}],
 			pageSize : 4, // 设置分页大小
 			proxy : {
 				type : 'ajax',
@@ -28,7 +39,9 @@ Ext.onReady(function() {
 			columns : [// 配置表格列
 				{header : "id",width : 30,dataIndex : 'id',sortable : true}, 
 				{header : "姓名",width : 80,dataIndex : 'name',sortable : true}, 
-				{header : "年龄",width : 80,dataIndex : 'age',sortable : true}
+				{header : "年龄",width : 80,dataIndex : 'age',sortable : true},
+				{header : "父亲",width : 80,dataIndex : 'father',sortable : true},
+				{header : "母亲",width : 80,dataIndex : 'mother',sortable : true}
 			],
 			tbar : [
 				{xtype:'button',id:'exportUser',text:'导出',iconCls:'table_export'},
