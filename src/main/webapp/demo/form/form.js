@@ -21,6 +21,7 @@ Ext.onReady(function(){
 				//msgTarget :'none'        //不显示提示信息
 				//msgTarget :'errorMsg'    //在errorMsg元素内显示提示信息
 			},
+			trackResetOnLoad: true,
 			items:[{
 				xtype : 'textfield',
 				name:'data.name',
@@ -41,6 +42,7 @@ Ext.onReady(function(){
 			buttons:[{
 				text:'加载' ,handler:function()
 				{
+					console.log(formpanel.getForm());
 					var text = formpanel.getForm().load({
 						url: 'formServer.jsp', 
 						method: 'GET',
