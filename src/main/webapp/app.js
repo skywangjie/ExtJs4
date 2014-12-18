@@ -7,7 +7,7 @@ Ext.onReady(function(){
 		name:"AM",
 		appFolder:"js/app",
 		launch:function(){
-			Ext.create("Ext.container.Viewport",{
+			var view = Ext.create("Ext.container.Viewport",{
 				layout:'border',
 				defaults : {
 					collapsible : true,
@@ -26,32 +26,11 @@ Ext.onReady(function(){
 				},
 				{
 					title: '导航栏',
-					id:'west-dept-tree',
+					itemId:'west-dept-tree',
 					region:'west',//指定子面板所在区域为west
 					layout:'accordion',
 					iconCls:'table_add',
-					width: 200,
-					items: [
-					{
-						title:'部门管理',
-						id:'dept-Tree',
-						xtype:'deptTree'
-					},
-					{
-						xtype:'panel',
-						title:'用户管理',
-						html : '说明一'
-					},
-					{
-						xtype:'panel',
-						title:'字典',
-						html : '说明一'
-					},
-					{
-						xtype:'panel',
-						title:'用户管理',
-						html : '说明一'
-					}]
+					width: 200
 				},
 				{
 					title: '工作间',
@@ -71,13 +50,11 @@ Ext.onReady(function(){
 					},
 					{
 						xtype :'userlist',
-//						layout: 'fit',
 						bodyStyle : 'padding:0',
 						title :'用户列表'
 					},
 					{
 						xtype :'deptGrid',
-//						layout: 'fit',
 						bodyStyle : 'padding:0',
 						title :'部门列表'
 					}]
@@ -88,7 +65,17 @@ Ext.onReady(function(){
 					height:40,
 					region:'south'
 				}]
-			})
+			});
+			Ext.Ajax.request({
+                url : 'data.json',
+                method : 'post',
+                success:function(response,option){
+                    var result = Ext.JSON.decode(response.responseText);
+                    Ext.each(result,function(data){
+                    	view.down('#west-dept-tree').add(data);
+                    })
+                }
+            });
 		},
 		controllers:[
 			'UserController','DeptController'
