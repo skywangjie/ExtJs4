@@ -9,20 +9,16 @@ Ext.onReady(function(){
 	//自定义数值范围验证
 	Ext.apply(Ext.data.validations,{
 		number : function(config, value){
-			if (value === undefined) 
-			{
+			if (value === undefined){
 		           return false;
 		    }
 	        var min    = config.min;
 	        var max    = config.max;
 	        
-		    if ((min && value < min) || (max && value > max)) 
-		    {
+		    if ((min && value < min) || (max && value > max)){
 		    		this.numberMessage = this.numberMessage+"它应该在["+min+"-"+max+"]";
 		           return false;
-		    } 
-		    else 
-		    {
+		    } else{
 		           return true;
 		    }
 		},
