@@ -1,8 +1,10 @@
 Ext.define("AM.view.UserView",{
 	extend:"Ext.grid.Panel",
-	title : 'demo',
+	title : '用户',
 	alias:'widget.userlist',
+	itemId:'userlist',
 	frame :true,
+	closable:true,
 	padding:0,
 	columns : [
 			Ext.create("Ext.grid.RowNumberer",{}),

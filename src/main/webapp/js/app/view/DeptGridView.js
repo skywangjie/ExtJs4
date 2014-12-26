@@ -1,7 +1,9 @@
 Ext.define("AM.view.DeptGridView",{
 	extend:"Ext.grid.Panel",
-	title : 'demo',
-	alias:'widget.deptGrid',
+	title : '部门',
+	alias:'widget.deptlist',
+	itemId:'deptlist',
+	closable:true,
 	frame :true,
 	columns : [
 			Ext.create("Ext.grid.RowNumberer",{}),

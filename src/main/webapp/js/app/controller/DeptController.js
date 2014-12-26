@@ -122,12 +122,12 @@ Ext.define("AM.controller.DeptController",{
 		});
 	},
 	views:[
-		'DeptTreeView','DeptGridView'
+		'DeptGridView'
 	],
 	stores:[
-		'DeptTreeStore','DeptGridStore'
+		'DeptGridStore'
 	],
 	models:[
-		'DeptGridModel','DeptTreeModel'
+		'DeptGridModel'
 	]
 });
