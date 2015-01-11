@@ -1,6 +1,6 @@
 Ext.onReady(function(){
 	Ext.create('Ext.panel.Panel',{
-		title:'Ext.layout.container.Table布局示例',
+		title:'Table布局示例',
 		layout : {
 			type : 'table',//表格布局
 			columns : 4 //设置表格布局默认列数为4列

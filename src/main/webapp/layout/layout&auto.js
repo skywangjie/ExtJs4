@@ -1,11 +1,11 @@
 Ext.onReady(function(){
 	Ext.create('Ext.panel.Panel',{
-		layout : 'fit',
-		title:'Ext.layout.container.Fit布局示例',
+		title:'Auto布局',
 		frame:true,//渲染面板
-		height : 150,
 		width : 250,
 		renderTo: Ext.getBody(),
+		bodyPadding: 5,
+		layout : 'auto',//自动布局
 		defaults : {//设置默认属性
 			bodyStyle:'background-color:#FFFFFF'//设置面板体的背景色
 		},
@@ -17,6 +17,6 @@ Ext.onReady(function(){
 		},{
 			title : '嵌套面板二',
 			html : '面板二'
-		}]
-	})
+			}]
+	});
 });
