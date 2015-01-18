@@ -2,10 +2,18 @@
  <HEAD>
   <TITLE>远程页面2</TITLE>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">
+  	window.onload = function () {
+  		document.getElementById('table').onclick=function(){
+  	  		alert('');
+  	  		console.log('2222');
+  	  	}
+	};
+  </script>
  </HEAD>
  <BODY>
 	远程页面2---员工列表
-	<table style="border:1px solid red">
+	<table id="table" style="border:1px solid red">
 		<tr>
 			<th width = 60>序号</th><th width = 80>姓名</th>
 		<tr>

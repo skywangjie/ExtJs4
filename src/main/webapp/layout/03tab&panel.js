@@ -19,7 +19,10 @@ Ext.onReady(function(){
 		var index = tabPanel.items.length + 1;
 		var tabPage = tabPanel.add({//动态添加tab页
 			title: 'tab标签页'+index,
-			html : 'tab标签页'+index+'内容',
+			autoLoad :{
+				scripts:true,
+				url:'page1.html'
+			},
 			closable : true//允许关闭
 		})
 		tabPanel.setActiveTab(tabPage);//设置当前tab页
