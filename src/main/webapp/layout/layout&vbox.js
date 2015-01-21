@@ -290,7 +290,7 @@ Ext.onReady(function() {
                     }  
                 },{  
                     xtype:'button',  
-                    text: 'Flex + Stretch',  
+                    text: 'Flex + align:Stretch',  
                     handler: function(){  
                         replace({  
                             layout: {  
@@ -403,6 +403,20 @@ Ext.onReady(function() {
                         }, 'align pack end + align center');  
                     }  
                 }]  
+            },{
+            	xtype:'panel',
+            	html:'<h5>align : String<h5>'+
+            			'<dl><dt>控制子组件在容器中的对齐方式, 此参数的有效值有以下几个:</dt>'+
+            			'<dd>left :  子组件是水平排列在容器的左侧【默认】</dd>'+
+            			'<dd>center : 子组件是水平排列在容器中的中间（mid-width）</dd>'+
+            			'<dd>right :  子组件是水平排列在容器的右侧</dd>'+
+            			'<dd>stretch : 子组件是横向延伸填充容器的宽度</dd>'+
+            			'<dd>stretchmax : 各子组件的宽度拉伸至与最宽的子组件的宽度相等</dd></dl>'+
+            		'<h5>pack : String<h5>'+
+            			'<dl><dt>控制子组件如何被打包在一起. 此属性的有效值为:</dt>'+
+            			'<dd>start - 子组件被包在一起放在容器的顶部 【默认】</dd>'+
+            			'<dd>center - 子组件被包在一起放在容器里垂直居中(mid-height)</dd>'+
+            			'<dd>end - 子组件被包在一起放在容器的底部</dd></dl>'
             }]  
         }]  
     });  

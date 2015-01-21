@@ -106,7 +106,7 @@ Ext.onReady(function() {
                                 text: 'Button 4',
                                 margins:'0'
                             }]
-                        }, 'multi spaced - align left');  
+                        }, 'multi spaced - align top');  
                     }
                 },{
                     xtype:'button',
@@ -132,7 +132,7 @@ Ext.onReady(function() {
                                 xtype:'button',
                                 text: 'Button 4'
                             }]
-                        }, 'align left');
+                        }, 'align top');
                     }
                 },{
                     xtype:'button',
@@ -213,7 +213,7 @@ Ext.onReady(function() {
                         }, 'align stretchmax');  
                     }  
                 }]  
-            },{  
+            },{
                 anchor: '100%',  
                 baseCls:'x-plain',  
                 layout: {  
@@ -290,7 +290,7 @@ Ext.onReady(function() {
                     }  
                 },{  
                     xtype:'button',  
-                    text: 'Flex + Stretch',  
+                    text: 'Flex + align: Stretch',  
                     handler: function(){  
                         replace({  
                             layout: {  
@@ -403,6 +403,20 @@ Ext.onReady(function() {
                         }, 'align pack end + align middle');  
                     }  
                 }]  
+            },{
+            	xtype:'panel',
+            	html:'<h5>align : String<h5>'+
+            			'<dl><dt>控制子组件在容器中的对齐方式, 此参数的有效值有以下几个:</dt>'+
+            			'<dd>top :  子组件垂直对齐在容器的顶部【默认】</dd>'+
+            			'<dd>middle : 子组件在容器中的垂直对齐</dd>'+
+            			'<dd>bottom : 子组件垂直对齐在容器的底部</dd>'+
+            			'<dd>stretch : 子组件是垂直拉伸以填充的容器的高度</dd>'+
+            			'<dd>stretchmax : 各子组件的高度拉伸至与最高的子组件的高度相等</dd></dl>'+
+            		'<h5>pack : String<h5>'+
+            			'<dl><dt>控制子组件如何被打包在一起. 此属性的有效值为:</dt>'+
+            			'<dd>start - 子组件被包在一起放在容器的左边 【默认】</dd>'+
+            			'<dd>center - 子组件被包在一起放在容器里水平居中(mid-width)</dd>'+
+            			'<dd>end - 子组件被包在一起放在容器的右边</dd></dl>'
             }]  
         }]  
     });  
