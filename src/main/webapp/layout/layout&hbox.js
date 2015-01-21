@@ -1,97 +1,409 @@
-Ext.onReady(function() {  
-    var d1 = Ext.create('Ext.Panel', {  
-        title : 'HBox 顶对齐，且组件在容器的左边',  
-        frame : true,  
-        width : 600,  
-        height : 100,  
-        items : [ {  
-            anchor : '100%',  
-            layout : {  
-                type : 'hbox',  
-                padding : '10',  
-                pack : 'start',  
-                align : 'top'  
-            },  
-            defaults : {  
-                margins : '0 5 0 0'  
-            },  
-            items : [ {  
-                xtype : 'button',  
-                text : 'Button 1'  
-            }, {  
-                xtype : 'button',  
-                text : 'Button 2'  
-            }, {  
-                xtype : 'button',  
-                text : 'Button 3'  
-            }, {  
-                xtype : 'button',  
-                text : 'Button 4'  
-            } ]  
-        } ]  
-    })  
-    d1.render('d1');  
-    var d2 = Ext.create('Ext.Panel', {  
-        title : 'HBox 垂直对齐，且组件在容器的右边',  
-        frame : true,  
-        width : 600,  
-        height : 100,  
-        items : [ {  
-            anchor : '100%',  
-            layout : {  
-                type : 'hbox',  
-                padding : '10',  
-                align : 'middle',  
-                pack : 'end'  
-            },  
-            defaults : {  
-                margins : '0 5 0 0'  
-            },  
-            items : [ {  
-                xtype : 'button',  
-                text : 'Button 1'  
-            }, {  
-                xtype : 'button',  
-                text : 'Button 2'  
-            }, {  
-                xtype : 'button',  
-                text : 'Button 3'  
-            }, {  
-                xtype : 'button',  
-                text : 'Button 4'  
-            } ]  
-        } ]  
-    })  
-    d2.render('d2');  
-    var d3 = Ext.create('Ext.Panel', {  
-        title : 'HBox 垂直水平居中，幵且所有控件高度为最高控件的高度',  
-        frame : true,  
-        width : 600,  
-        height : 100,  
-        items : [ {  
-            anchor : '100%',  
-            layout : {  
-                type : 'hbox',  
-                padding : '5',  
-                align : 'stretchmax',  
-                pack : 'center'  
-            },  
-            defaults : {  
-                margins : '0 5 0 0'  
-            },  
-            items : [ {  
-                xtype : 'button',  
-                text : 'Small Size'  
-            }, {  
-                xtype : 'button',  
-                scale : 'medium',  
-                text : 'Medium Size'  
-            }, {  
-                xtype : 'button',  
-                scale : 'large',  
-                text : 'Large Size'  
-            } ]  
-        } ]  
-    })  
-    d3.render('d3');  
+Ext.onReady(function() {
+    var currentName;
+    var replace = function(config, name) {
+        var btns = Ext.getCmp('btns');
+        if (name && name != currentName) {
+            currentName = name;
+            btns.remove(0);
+            btns.add(Ext.apply(config));
+        }
+    };
+    var viewport = Ext.create('Ext.Viewport', {
+        layout:'border',
+        items: [{
+            id:'btns',
+            region:'west',
+            baseCls:'x-plain',
+            split:true,
+            width:450,
+            minWidth: 300,
+            maxWidth: 650,
+            layout:'fit',
+            margins: '5 0 5 5',
+            items: {
+                baseCls: 'x-plain',
+                html: '<p style="padding:10px;color:#556677;font-size:11px;">点击右边的按钮查看效果</p>'  
+            }
+        },{
+            region:'center',
+            margins: '5 5 5 0',
+            layout: 'anchor',
+            items:[{
+                anchor: '100%',
+                baseCls:'x-plain',
+                layout: {
+                    type:'hbox',
+                    padding: 10
+                },
+                defaults:{
+                    margins:'0 5 0 0',
+                    pressed: false,
+                    toggleGroup:'btns',
+                    allowDepress: false
+                },
+                items: [{
+                    xtype:'button',
+                    text: 'Spaced / Align: top',
+                    handler: function(){
+                        replace({
+                            layout: {
+                                type:'hbox',
+                                padding:'5',
+                                align:'top'
+                            },  
+                            defaults:{margins:'0 0 5 0'},
+                            items:[{
+                                xtype:'button',
+                                text: 'Button 1'
+                            },{
+                                xtype:'tbspacer',
+                                flex:1
+                            },{  
+                                xtype:'button',
+                                text: 'Button 2'
+                            },{
+                                xtype:'button',
+                                text: 'Button 3'
+                            },{
+                                xtype:'button',
+                                text: 'Button 4',
+                                margins:'0'
+                            }]
+                        },
+                        'spaced');
+                    }
+                },{
+                    xtype:'button',
+                    text: 'Multi-Spaced / Align: top',
+                    handler: function(){
+                        replace({
+                            layout: {
+                                type:'hbox',
+                                padding:'5',
+                                align:'top'
+                            },
+                            defaults:{margins:'0 0 5 0'},
+                            items:[{
+                                xtype:'button',
+                                text: 'Button 1'
+                            },{
+                                xtype:'tbspacer',
+                                flex:1
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2'  
+                            },{
+                                xtype:'tbspacer',
+                                flex:1
+                            },{  
+                                xtype:'button',
+                                text: 'Button 3'
+                            },{
+                                xtype:'tbspacer',
+                                flex:1
+                            },{
+                                xtype:'button',
+                                text: 'Button 4',
+                                margins:'0'
+                            }]
+                        }, 'multi spaced - align left');  
+                    }
+                },{
+                    xtype:'button',
+                    text: 'Align: top',
+                    handler: function(){
+                        replace({
+                            layout: {
+                                type:'hbox',
+                                padding:'5',
+                                align:'top'
+                            },
+                            defaults:{margins:'0 0 5 0'},
+                            items:[{
+                                xtype:'button',
+                                text: 'Button 1'
+                            },{
+                                xtype:'button',
+                                text: 'Button 2'
+                            },{
+                                xtype:'button',
+                                text: 'Button 3'
+                            },{
+                                xtype:'button',
+                                text: 'Button 4'
+                            }]
+                        }, 'align left');
+                    }
+                },{
+                    xtype:'button',
+                    text: 'Align: middle',
+                    handler: function(){
+                        replace({
+                            layout: {
+                                type:'hbox',
+                                padding:'5',
+                                align:'middle'
+                            },
+                            defaults:{margins:'0 0 5 0'},
+                            items:[{
+                                xtype:'button',
+                                text: 'Button 1'
+                            },{
+                                xtype:'button',  
+                                text: 'Button 2'  
+                            },{  
+                                xtype:'button',
+                                text: 'Button 3'
+                            },{
+                                xtype:'button',
+                                text: 'Button 4'
+                            }]
+                        }, 'align middle');
+                    }
+                },{
+                    xtype:'button',  
+                    text: 'Align: stretch',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                align:'stretch'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4'  
+                            }]  
+                        }, 'align stretch');  
+                    }  
+                },{  
+                    xtype:'button',  
+                    text: 'Align: stretchmax',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                align:'stretchmax'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Jamie'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Aaron'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Tommy'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Ed '  
+                            }]  
+                        }, 'align stretchmax');  
+                    }  
+                }]  
+            },{  
+                anchor: '100%',  
+                baseCls:'x-plain',  
+                layout: {  
+                    type:'hbox',  
+                    padding: '0 10 10'  
+                },  
+                defaults:{  
+                    margins:'0 5 0 0',  
+                    pressed: false,  
+                    toggleGroup:'btns',  
+                    allowDepress: false  
+                },  
+                items: [{  
+                    xtype:'button',  
+                    text: 'Flex: Even / Align: middle',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                align:'middle'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4',  
+                                flex:1,  
+                                margins:'0'  
+                            }]  
+                        }, 'align flex even');  
+                    }  
+                },{  
+                    xtype:'button',  
+                    text: 'Flex: Ratio / Align: middle',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                align:'middle'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4',  
+                                flex:3,  
+                                margins:'0'  
+                            }]  
+                        }, 'align flex ratio');  
+                    }  
+                },{  
+                    xtype:'button',  
+                    text: 'Flex + Stretch',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                align:'stretch'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3',  
+                                flex:1  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4',  
+                                flex:3,  
+                                margins:'0'  
+                            }]  
+                        }, 'align flex + stretch');  
+                    }  
+                },{  
+                    xtype:'button',  
+                    text: 'Pack: start / Align: middle',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                pack:'start',  
+                                align:'middle'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4'  
+                            }]  
+                        }, 'align pack start + align middle');  
+                    }  
+                },{  
+                    xtype:'button',  
+                    text: 'Pack: center / Align: middle',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                pack:'center',  
+                                align:'middle'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4',  
+                                margins:'0'  
+                            }]  
+                        }, 'align pack center + align middle');  
+                    }  
+                },{  
+                    xtype:'button',  
+                    text: 'Pack: end / Align: middle',  
+                    handler: function(){  
+                        replace({  
+                            layout: {  
+                                type:'hbox',  
+                                padding:'5',  
+                                pack:'end',  
+                                align:'middle'  
+                            },  
+                            defaults:{margins:'0 0 5 0'},  
+                            items:[{  
+                                xtype:'button',  
+                                text: 'Button 1'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 2'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 3'  
+                            },{  
+                                xtype:'button',  
+                                text: 'Button 4',  
+                                margins:'0'  
+                            }]  
+                        }, 'align pack end + align middle');  
+                    }  
+                }]  
+            }]  
+        }]  
+    });  
 });
