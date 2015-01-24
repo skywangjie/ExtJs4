@@ -20,7 +20,7 @@ Ext.onReady(function(){
 			disabledDatesText :'禁止选择该日期',
 			disabledDays : [0,6],//禁止选择星期日和星期六
 			disabledDaysText : '禁止选择该日期',
-			width : 220,
+			width : 250,
 			value : '12/31/2008'
 		}]
 	});

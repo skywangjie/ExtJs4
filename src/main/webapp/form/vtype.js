@@ -7,7 +7,37 @@ Ext.onReady(function(){
         	return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(v);
     	},
     	IPAddressText: 'Must be a numeric IP address',
-    	IPAddressMask: /[\d\.]/i
+    	IPAddressMask: /[\d\.]/i,
+    	daterange: function(val, field) {
+            var date = field.parseDate(val);
+            if (!date) {
+                return false;
+            }
+            if (field.startDateField && (!this.dateRangeMax || (date.getTime() != this.dateRangeMax.getTime()))) {
+            	console.log(field.up('form').down('#' + field.startDateField));
+            	var start = field.up('form').down('#' + field.startDateField);
+                start.setMaxValue(date);
+                start.validate();
+                this.dateRangeMax = date;
+            }
+            else if (field.endDateField && (!this.dateRangeMin || (date.getTime() != this.dateRangeMin.getTime()))) {
+            	console.log(field.up('form').down('#' + field.endDateField));
+            	var end = field.up('form').down('#' + field.endDateField);
+                end.setMinValue(date);
+                end.validate();
+                this.dateRangeMin = date;
+            }
+            return true;
+        },
+        daterangeText: 'Start date must be less than end date',
+        password: function(val, field) {
+            if (field.initialPassField) {
+                var pwd = field.up('form').down('#' + field.initialPassField);
+                return (val == pwd.getValue());
+            }
+            return true;
+        },
+        passwordText: '密码不匹配'
 	});
 	Ext.create('Ext.form.Panel',{
 		title:'vtype示例',
@@ -19,7 +49,7 @@ Ext.onReady(function(){
 		fieldDefaults:{//统一设置表单字段默认属性
 			labelSeparator :'：',//分隔符
 			labelWidth : 80,//标签宽度
-			width : 270,//字段宽度
+			width : 240,//字段宽度
 			msgTarget : 'side'
 		},
 		items:[
@@ -42,6 +72,40 @@ Ext.onReady(function(){
 		{
 			fieldLabel:'IP地址',
 			vtype:'IPAddress'
-		}]
+		},{
+			xtype: 'datefield',
+            fieldLabel: '开始日期',
+            name: 'startdt',
+            itemId: 'startdt',
+            vtype: 'daterange',
+            endDateField: 'enddt' // id of the end date field
+        }, {
+        	xtype: 'datefield',
+            fieldLabel: '结束日期',
+            name: 'enddt',
+            itemId: 'enddt',
+            vtype: 'daterange',
+            startDateField: 'startdt' // id of the start date field
+        },{
+            fieldLabel: '密码',
+            inputType: 'password',
+            name: 'pass',
+            itemId: 'pass',
+            allowBlank: false,
+            listeners: {
+                validitychange: function(field){
+                    field.next().validate();
+                },
+                blur: function(field){
+                    field.next().validate();
+                }
+            }
+        }, {
+            fieldLabel: '确认密码',
+            inputType: 'password',
+            name: 'pass-cfrm',
+            vtype: 'password',
+            initialPassField: 'pass' // id of the initial password field
+        }]
 	});
 });

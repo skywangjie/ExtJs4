@@ -29,7 +29,12 @@ Ext.onReady(function(){
 			},{
 				xtype : 'numberfield',
 				name:'data.age',
-				fieldLabel : '年龄'
+				fieldLabel : '年龄',
+				listeners:{
+					change:function(f, newValue, oldValue, eOpts ){
+						console.log(f);
+					}
+				}
 			},{
 				xtype : 'textfield',
 				name:'data.father',
