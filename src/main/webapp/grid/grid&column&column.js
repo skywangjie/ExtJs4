@@ -38,7 +38,7 @@ Ext.onReady(function(){
 				format:'0,000'//数字格式化字符串
 			},
 			{header : 'Active', width: 50, dataIndex : 'active',
-				xtype : 'checkcolumn',
+				xtype : 'checkcolumn',//
 				listeners:{
 					checkchange:function(checkcolumn, rowIndex, checked, eOpts ){
 						var store = checkcolumn.ownerCt.ownerCt.getStore();
