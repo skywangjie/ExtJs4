@@ -1,0 +1,12 @@
+.table_add{
+	background-image: url(../images/add.gif) !important;
+}
+.table_remove{
+	background-image: url(../images/del.gif) !important;
+}
+.table_edit{
+	background-image: url(../images/edit.png) !important;
+}
+.table_search{
+	background-image: url(../images/search.gif) !important;
+}

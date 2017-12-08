@@ -1,0 +1,42 @@
+[
+	{
+		title:'部门管理',
+		id:'dept-Tree',
+		xtype:'deptTree'
+	},
+	{
+		xtype:'panel',
+		title:'用户管理',
+		html : '说明一'
+	},
+	{
+		xtype:'panel',
+		title:'用户管理',
+		html : '说明一'
+	},
+	{
+		xtype:'panel',
+		title:'用户管理',
+		html : '说明一'
+	},
+	{
+		xtype:'panel',
+		title:'用户管理',
+		html : '说明一'
+	},
+	{
+		xtype:'panel',
+		title:'用户管理',
+		html : '说明一'
+	},
+	{
+		xtype:'panel',
+		title:'用户管理',
+		html : '说明一'
+	},
+	{
+		xtype:'panel',
+		title:'字典',
+		html : '说明一'
+	}
+]

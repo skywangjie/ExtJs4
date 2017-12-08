@@ -1,0 +1,48 @@
+Ext.define("AM.view.deptView",{
+	extend:'Ext.tree.Panel',
+	alias:'widget.deptTree',
+	title:'部门树形',
+	width:250,
+	height:300,
+	padding:'5 3 3 10',
+	rootVisible:false,
+	config:{
+		copyNodes:''//充当剪切板的作用
+	},
+	viewConfig:{
+		plugins:{
+			ptype:'treeviewdragdrop',
+			appendOnly:true
+		},
+		listeners:{
+			drop:function(node,data,overModel,dropPosition,dropFunction,options){
+				alert("把"+data.records[0].get('text')+"移动到"+overModel.get('text'));
+			},
+			beforedrop:function(node,data,overModel,dropPosition,dropFunction,options){
+				if(overModel.get("leaf")){
+					overModel.set("leaf",false)
+				}
+			}
+		}
+	},
+	dockedItems:[
+		{
+			xtype:'toolbar',
+			dock:'left',
+			items:[
+				{xtype:'button',text:'add',id:'add'},
+				{xtype:'button',text:'copy',id:'copy'},
+				{xtype:'button',text:'delete',id:'delete'},
+				{xtype:'button',text:'paste',id:'paste'}
+			]
+		},
+		{
+			xtype:'toolbar',
+			items:[
+				{xtype:'button',text:'展开全部',id:'allopen'},
+				{xtype:'button',text:'关闭全部',id:'allclose'}
+			]
+	}],
+	store:'deptStore'
+
+})

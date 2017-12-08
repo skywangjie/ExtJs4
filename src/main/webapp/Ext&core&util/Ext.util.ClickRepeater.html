@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Ext.util.ClickRepeater示例</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1/resources/css/ext-all-neptune.css" />
+	<script type="text/javascript" src="../ext-4.2.1/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1/locale/ext-lang-zh_CN.js"></script>
+<style type="text/css">
+body{
+	font-size:11pt;
+	color:black;
+	padding:5px;
+}
+</style>
+<script type="text/javascript">
+	Ext.onReady(function(){
+		var panel = new Ext.Panel({
+			title:'event',
+			html:'<div id="my-div"><input type="button" value="点击我" name="but"/></div>',
+			height:200,
+			width:300
+		});
+		panel.render("hr_panel");
+		//获取元素节点
+		var el = Ext.get("my-div");
+		//实例化并初始化
+		var cl = new Ext.util.ClickRepeater(el,{
+			delay:1000,//首次重复的时间间隔
+			interval:1002,//发生完首次重复点击后若第二次再重复点击的时间间隔
+			stopDefault:true,
+			pressClass:'p1',
+			handler:function rep(){
+				Ext.MessageBox.alert('点击提示',"点击触发了!");
+			}
+		});
+		cl.getName();
+	});
+</script>
+</head>
+<body>
+	<table><tr><td><div id="hr_panel"></div></td></tr></table>
+</body>
+</html>

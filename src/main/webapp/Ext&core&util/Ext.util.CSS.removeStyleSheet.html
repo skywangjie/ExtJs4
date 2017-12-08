@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>移除样式</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1/resources/css/ext-all-neptune.css" />
+	<script type="text/javascript" src="../ext-4.2.1/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1/locale/ext-lang-zh_CN.js"></script>
+<style type="text/css">
+body{
+	font-size:11pt;
+	color:black;
+	padding:5px;
+	font-family:'Arial';
+}
+</style>
+<script type="text/javascript">
+	Ext.onReady(function(){
+		Ext.util.CSS.createStyleSheet(".a1{font-size:12px;color:red;}","thecss");
+		var panel = new Ext.panel.Panel({
+			title:'添加css并移除',
+			html:'首先我们添加一个样式,然后移除他'
+,
+			height:200,
+			width:300
+		});
+		panel.render("hr_panel");
+		
+		setBtn = new Ext.button.Button({
+			//image : '../../ext-4.0/resources/images/button_del.jpg',
+			text : '移除样式',
+			width : 50,
+			handler : function(){
+				Ext.util.CSS.removeStyleSheet("thecss");
+			}
+		});
+		setBtn.render("setBut");
+	});
+</script>
+</head>
+<body>
+	<table ><tr><td><div id="hr_panel"><div id="setBut"></div></div></td></tr></table>
+</body>
+</html>

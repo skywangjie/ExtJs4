@@ -1,0 +1,20 @@
+<HTML>
+ <HEAD>
+  <TITLE>点击不同的按钮回调函数会得到不同的参数</TITLE>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../ext-4.2.1/resources/css/ext-all-neptune.css" />
+	<script type="text/javascript" src="../ext-4.2.1/bootstrap.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1/locale/ext-lang-zh_CN.js"></script>
+  <script type="text/javascript">
+	Ext.onReady(function(){
+		Ext.MessageBox.confirm('提示','请单击我，做出选择',function(){
+			alert('单击的按钮ID是：'+id);
+		});
+	});
+  </script>
+ </HEAD>
+ <BODY>
+  
+ </BODY>
+</HTML>
